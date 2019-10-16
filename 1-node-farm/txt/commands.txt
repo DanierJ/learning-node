@@ -1,4 +1,4 @@
 _ to see the previous results
 ctl + d or .exit to exit the node env
 ctrl + k to clear the console
-tab (twice) to display hints about methods and global variables 
+tab (twice) to display hints about methods and global variables
