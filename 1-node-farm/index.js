@@ -49,7 +49,10 @@ server.listen(8585, '127.0.0.1', () => {
 
 //////////////// ROUTING ///////////////////////
 const url = require('url');
+const fs = require('fs');
 
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8');
+const productData = JSON.parse(data);
 
 
 const server = http.createServer((request, response) => {
@@ -59,15 +62,24 @@ const server = http.createServer((request, response) => {
 
   if (pathName === '/' || pathName === '/overview') {
     response.end('This is the overview.');
+
   } else if(pathName === '/product') {
-    response.end('This is the product.')
+    response.end('This is the product.');
+
+  } else if(pathName === '/api') {
+      response.writeHead(200, {
+        'Content-type': 'application/json'
+      });
+      response.end(data);
+
+  } else {
+    response.writeHead(404, {
+      // headers
+      'Content-type': 'text/html',
+      'my-own-header': 'hi-header'
+    });
+    response.end('<h1>Page not found!</h1>');
   }
-  response.writeHead(404, {
-    // headers
-    'Content-type': 'text/html',
-    'my-own-header': 'hi-header'
-  });
-  response.end('<h1>Page not found!</h1>');
 });
 
 server.listen(3630, 'localhost', () => {
