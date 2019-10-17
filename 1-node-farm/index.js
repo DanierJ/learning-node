@@ -37,7 +37,7 @@ const http = require('http');
  */
 
 // 1. We create the server, the callback it's hit with every new request.
-const server = http.createServer((request, response) => {
+/*const server = http.createServer((request, response) => {
  // console.log(request);
   response.end('Hello from the server!'); // here we're sending a response.
 });
@@ -45,6 +45,33 @@ const server = http.createServer((request, response) => {
 // 2. We need to start the server.
 server.listen(8585, '127.0.0.1', () => {
   console.log('Listening to request on port: 8585');
+});*/
+
+//////////////// ROUTING ///////////////////////
+const url = require('url');
+
+
+
+const server = http.createServer((request, response) => {
+  console.log(request.url);
+
+  const pathName = request.url;
+
+  if (pathName === '/' || pathName === '/overview') {
+    response.end('This is the overview.');
+  } else if(pathName === '/product') {
+    response.end('This is the product.')
+  }
+  response.writeHead(404, {
+    // headers
+    'Content-type': 'text/html',
+    'my-own-header': 'hi-header'
+  });
+  response.end('<h1>Page not found!</h1>');
+});
+
+server.listen(3630, 'localhost', () => {
+  console.log('Listening to request on port: 3630');
 });
 
 
