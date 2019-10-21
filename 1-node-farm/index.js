@@ -50,7 +50,9 @@ server.listen(8585, '127.0.0.1', () => {
 //////////////// ROUTING ///////////////////////
 const url = require('url');
 const fs = require('fs');
+const slugify = require('slugify');
 const replaceTemplate = require('./modules/replaceTemplate');
+
 
 const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8');
 
@@ -60,6 +62,10 @@ const tempCard = fs.readFileSync(`${__dirname}/templates/template-card.html`,'ut
 const tempProduct = fs.readFileSync(`${__dirname}/templates/template-product.html`,'utf-8');
 
 const productData = JSON.parse(data);
+
+const slugs = productData.map( product => slugify(product.productName, {lower: true}));
+
+console.log(slugs);
 
 
 
