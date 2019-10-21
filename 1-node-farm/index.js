@@ -124,3 +124,10 @@ server.listen(3630, 'localhost', () => {
 });
 
 
+// npm outdated
+// npm i package@version
+// npm update package
+// npm uninstall package 
+// ^ -> patch and minor releases
+// ~ -> patch releases
+// * -> all the type releases
