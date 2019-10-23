@@ -52,9 +52,14 @@ const getDogPic = async () => {
   try {
     const data = await readFilePro(`${__dirname}/dog.txt`),
           hound = data.toString().trim(),
-          res = await superagent.get(`https://dog.ceo/api/breed/${hound}/images/random`);
+          res1Pro = superagent.get(`https://dog.ceo/api/breed/${hound}/images/random`),res2Pro = superagent.get(`https://dog.ceo/api/breed/${hound}/images/random`),res3Pro = superagent.get(`https://dog.ceo/api/breed/${hound}/images/random`),
+           all = await Promise.all([res1Pro, res2Pro, res3Pro]);
+
+           const imgs =  all.map(el => el.body.message);
+
+           console.log(imgs);
   
-    console.log(await writeFilePro('dog-img.txt', res.body.message));
+    console.log(await writeFilePro('dog-img.txt', imgs.join('\n')));
   } catch (err) {
     console.log(err);
     throw(err); // This is to get the reject option.
@@ -81,3 +86,5 @@ getDogPic().then(data => {
     console.log(err);
   }
 })();
+
+/// Many promises at the same time.
