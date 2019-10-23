@@ -57,7 +57,27 @@ const getDogPic = async () => {
     console.log(await writeFilePro('dog-img.txt', res.body.message));
   } catch (err) {
     console.log(err);
+    throw(err); // This is to get the reject option.
   }
+
+  return '2: ready'
 };
 
-getDogPic();
+/*
+console.log('1: Will get dog pics!');
+getDogPic().then(data => {
+  console.log(data);
+  console.log('3: Done getting dog pics!');
+}).catch(err => console.log('ERROR'));
+*/
+
+(async () => {
+  try {
+    console.log('1: Will get dog pics!');
+    console.log(await getDogPic());
+    console.log('3: Done getting dog pics!');
+
+  } catch (err) {
+    console.log(err);
+  }
+})();
