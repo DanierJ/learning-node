@@ -36,7 +36,8 @@ const writeFilePro = (file, data) => {
   });
 });*/
 
-
+// Promises
+/*
 readFilePro(`${__dirname}/dog.txt`)
   .then(data => {
     const hound = data.toString().trim();
@@ -45,4 +46,18 @@ readFilePro(`${__dirname}/dog.txt`)
       .then(res => writeFilePro('dog-img.txt', res.body.message))
       .then(data => console.log(data))
       .catch(err => console.log(err));
+*/
 
+const getDogPic = async () => {
+  try {
+    const data = await readFilePro(`${__dirname}/dog.txt`),
+          hound = data.toString().trim(),
+          res = await superagent.get(`https://dog.ceo/api/breed/${hound}/images/random`);
+  
+    console.log(await writeFilePro('dog-img.txt', res.body.message));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+getDogPic();
