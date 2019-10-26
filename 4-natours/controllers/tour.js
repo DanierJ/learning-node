@@ -65,3 +65,14 @@ exports.checkID = (req, res, next, val) => {
   }
   next();
 };
+
+exports.checkBody = (req, res, next) => {
+
+  if(!(req.body.price && req.body.name)) {
+    return res.status(400).json({
+      status: 'fail',
+      message: 'invalid body'
+    });
+  }
+   next();
+};
