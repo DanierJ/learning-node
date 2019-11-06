@@ -41,6 +41,19 @@ const tourSchema = new mongoose.Schema({
 
 const Tour = mongoose.model('Tour', tourSchema);
 
+const testTour = new Tour({
+  name: 'The Park Camper',
+  price: 497
+});
+
+testTour
+  .save()
+  .then(doc => {
+    // eslint-disable-next-line no-console
+    console.log(doc);
+  })
+  // eslint-disable-next-line no-console
+  .catch(err => console.log('ERROR: ', err));
 
 const app = require('./app');
 
