@@ -15,6 +15,7 @@ app.use(express.static(`${__dirname}/public`));
 
 // applied to each and every single request.
 app.use((req, res, next) => {
+  // eslint-disable-next-line no-console
   console.log('Hello from the middleware.');
   next();
 });
