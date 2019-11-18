@@ -26,7 +26,6 @@ const sendErrorDev = (err, res) => {
     stack: err.stack
   });
 };
-
 const sendErrorProd = (err, res) => {
   // Operational, trusted error: send message
   if (err.isOperational) {
