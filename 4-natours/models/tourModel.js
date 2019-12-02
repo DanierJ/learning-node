@@ -120,6 +120,14 @@ tourSchema.virtual('durationWeeks').get(function() {
   return this.duration / 7;
 });
 
+tourSchema.pre(/^find/, function(next) {
+  this.populate({
+    path: 'guides',
+    select: '-__v -passwordChangedAt'
+  });
+  next();
+});
+
 // Document Middleware: runs before the .save() and .create() but not .insertMany()
 tourSchema.pre('save', function(next) {
   this.slug = slugify(this.name, { lower: true });
