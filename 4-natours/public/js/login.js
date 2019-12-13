@@ -20,7 +20,6 @@ export const login = async (email, password) => {
       }
     });
 
-    console.log('HELLO');
 
     if (res.data.status === 'success') {
       showAlert('success', 'Logged in successfully');
