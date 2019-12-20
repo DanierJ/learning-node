@@ -36,8 +36,8 @@ if (logOutBtn) logOutBtn.addEventListener('click', logout);
 if (userDataForm) {
   userDataForm.addEventListener('submit',  (e) => {
     e.preventDefault();
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
 
     updateSettings({name, email}, 'data');
   })

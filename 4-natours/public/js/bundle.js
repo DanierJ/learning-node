@@ -8832,8 +8832,8 @@ if (logOutBtn) logOutBtn.addEventListener('click', _login.logout);
 if (userDataForm) {
   userDataForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = document.getElementById('name');
-    var email = document.getElementById('email');
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
     (0, _updateSettings.updateSettings)({
       name: name,
       email: email
@@ -8902,7 +8902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59321" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60485" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
