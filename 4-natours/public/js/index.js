@@ -38,8 +38,15 @@ if (userDataForm) {
     e.preventDefault();
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
+    const photo = document.getElementById('photo').files[0];
+    const form = new FormData();
+    form.append('name', name);
+    form.append('email', email);
+    form.append('photo', photo);
 
-    updateSettings({name, email}, 'data');
+    console.log(form);
+
+    updateSettings(form, 'data');
   })
 }
 if (userPasswordForm) {
