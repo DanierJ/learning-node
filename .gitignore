@@ -8,12 +8,12 @@
 /bazel-out
 
 # dependencies
-/node_modules
 node_modules/
-/.cache
-.cache/
-*.env
-*.env/
+1-node-farm/node_modules
+4-natours/node_modules
+3-asynchronous-JS/node_modules
+4-natours/config.env
+
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
